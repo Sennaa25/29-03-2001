@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Sister</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: black;
+            color: pink;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        h2 {
+            font-size: 30px;
+            color: red;
+        }
+        .roses {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="roses">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</div>
+    <h1>Happy Birthday My Sister</h1>
+    <h2>💖 Wishing you love, joy, and happiness! 💖</h2>
+    <div class="roses">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</div>
+</body>
+</html>
