@@ -18,7 +18,6 @@
             flex-direction: column;
             position: relative;
             color: white;
-            font-size: 2em;
             overflow: hidden;
         }
         .container {
@@ -27,6 +26,11 @@
             border-radius: 15px;
             background: rgba(0, 0, 0, 0.6);
             animation: fadeIn 2s ease-in-out;
+        }
+        .text {
+            font-size: 2.5em;
+            opacity: 0;
+            animation: textFade 3s ease-in-out forwards;
         }
         .next-btn {
             margin-top: 20px;
@@ -44,6 +48,10 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes textFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes falling-sakura {
             0% { transform: translateY(0px) rotate(0deg); }
@@ -64,12 +72,12 @@
         <source src="https://www.mboxdrive.com/Thinking%20Out%20Loud.mp3" type="audio/mpeg">
     </audio>
     <div class="container" id="slide1">
-        <h1>Happy Birthday My Sister🥳</h1>
-        <p>Wish you all the best</p>
+        <h1 class="text">Happy Birthday My Sister🥳</h1>
+        <p class="text" style="animation-delay: 1s;">Wish you all the best</p>
         <button class="next-btn" onclick="nextSlide()">Next</button>
     </div>
     <div class="container" id="slide2" style="display: none;">
-        <h1>Thank you for being the best sister in the world</h1>
+        <h1 class="text">Thank you for being the best sister in the world</h1>
     </div>
     <script>
         function nextSlide() {
@@ -84,7 +92,7 @@
             document.body.appendChild(sakura);
             setTimeout(() => { sakura.remove(); }, 7000);
         }
-        setInterval(createSakura, 300);
+        setInterval(createSakura, 200);
     </script>
 </body>
 </html>
