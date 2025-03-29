@@ -1,118 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Sister 🎉</title>
+    <title>Happy Birthday My Sister</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             text-align: center;
-            background-color: black;
-            color: white;
-            font-family: "Arial", sans-serif;
-            padding: 20px;
-            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?sakura,flowers') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             position: relative;
+            color: white;
+            font-size: 2em;
         }
-
-        h1 {
-            font-size: 50px;
-            text-shadow: 0 0 10px pink, 0 0 20px pink;
-            animation: glow 2s ease-in-out infinite alternate;
+        .container {
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
         }
-
-        h2 {
-            font-size: 30px;
-            color: lightpink;
-            animation: glow 1.5s ease-in-out infinite alternate;
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            background-color: pink;
+            border-radius: 10px;
         }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 5px pink, 0 0 10px pink; }
-            to { text-shadow: 0 0 15px pink, 0 0 30px pink; }
+        @keyframes falling-sakura {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(100vh); }
         }
-
-        /* Cherry Blossom Trees */
-        .cherry-blossom {
-            position: absolute;
-            bottom: 0;
-            width: 200px;
-            height: auto;
-            animation: sway 3s ease-in-out infinite alternate;
-            opacity: 0.9;
-        }
-
-        .tree-left { left: 5%; }
-        .tree-right { right: 5%; transform: scaleX(-1); }
-
-        @keyframes sway {
-            from { transform: rotate(-2deg); }
-            to { transform: rotate(2deg); }
-        }
-
-        /* Sakura Petals */
         .sakura {
             position: absolute;
-            top: -50px;
-            width: 30px;
-            height: 30px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Prunus_serrulata_04.jpg/480px-Prunus_serrulata_04.jpg');
-            background-size: cover;
-            filter: drop-shadow(0 0 10px pink);
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* Music Player */
-        .music-controls {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Sakura_petal.png') no-repeat center/contain;
+            animation: falling-sakura 5s linear infinite;
         }
     </style>
 </head>
 <body>
-    <h1>🎂 Happy Birthday My Sister 🎂</h1>
-    <h2>Wish you all the best 🥳🌸</h2>
-
-    <!-- Cherry Blossom Trees -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Cherry_blossom_tree.png" class="cherry-blossom tree-left">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Cherry_blossom_tree.png" class="cherry-blossom tree-right">
-
-    <!-- Background Music -->
-    <audio id="bg-music" loop autoplay>
-        <source src="https://www.bensound.com/bensound-music/bensound-buddy.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+    <audio autoplay loop>
+        <source src="https://www.mboxdrive.com/Thinking%20Out%20Loud.mp3" type="audio/mpeg">
     </audio>
-
-    <!-- Music Controls -->
-    <div class="music-controls">
-        <button onclick="document.getElementById('bg-music').play()">▶ Play</button>
-        <button onclick="document.getElementById('bg-music').pause()">⏸ Pause</button>
+    <div class="container" id="slide1">
+        <h1>Happy Birthday My Sister🥳</h1>
+        <p>Wish you all the best</p>
+        <button class="next-btn" onclick="nextSlide()">Next</button>
     </div>
-
+    <div class="container" id="slide2" style="display: none;">
+        <h1>Thank you for being the best sister in the world</h1>
+    </div>
     <script>
-        function createSakura() {
-            const petal = document.createElement("div");
-            petal.classList.add("sakura");
-            petal.style.left = Math.random() * window.innerWidth + "px";
-            petal.style.animationDuration = (5 + Math.random() * 3) + "s"; 
-            document.body.appendChild(petal);
-
-            setTimeout(() => {
-                petal.remove();
-            }, 8000);
+        function nextSlide() {
+            document.getElementById('slide1').style.display = 'none';
+            document.getElementById('slide2').style.display = 'block';
         }
-
-        setInterval(createSakura, 250); // Create a new sakura petal every 250ms
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.classList.add('sakura');
+            sakura.style.left = Math.random() * window.innerWidth + 'px';
+            sakura.style.animationDuration = (Math.random() * 5 + 3) + 's';
+            document.body.appendChild(sakura);
+            setTimeout(() => { sakura.remove(); }, 5000);
+        }
+        setInterval(createSakura, 300);
     </script>
 </body>
 </html>
