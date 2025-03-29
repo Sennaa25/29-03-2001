@@ -11,16 +11,63 @@
             color: pink;
             font-family: Arial, sans-serif;
             padding: 20px;
+            overflow: hidden;
         }
+
         h1 {
             font-size: 50px;
+            animation: fadeIn 2s ease-in-out infinite alternate;
         }
+
         h2 {
             font-size: 30px;
             color: red;
+            animation: bounce 1.5s infinite;
         }
+
         .roses {
             font-size: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Falling roses animation */
+        .falling-rose {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Music player styling */
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -29,5 +76,34 @@
     <h1>Happy Birthday My Sister</h1>
     <h2>💖 Wishing you love, joy, and happiness! 💖</h2>
     <div class="roses">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-birthday.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <button onclick="document.getElementById('bg-music').play()">▶ Play</button>
+        <button onclick="document.getElementById('bg-music').pause()">⏸ Pause</button>
+    </div>
+
+    <script>
+        function createFallingRose() {
+            const rose = document.createElement("div");
+            rose.classList.add("falling-rose");
+            rose.innerHTML = "🌹";
+            rose.style.left = Math.random() * window.innerWidth + "px";
+            rose.style.animationDuration = (3 + Math.random() * 2) + "s"; 
+            document.body.appendChild(rose);
+
+            setTimeout(() => {
+                rose.remove();
+            }, 5000);
+        }
+
+        setInterval(createFallingRose, 300); // Create a new rose every 300ms
+    </script>
 </body>
 </html>
