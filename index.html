@@ -2,97 +2,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Sister</title>
+    <title>Happy Birthday Animation</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         body {
             margin: 0;
-            padding: 0;
-            text-align: center;
-            font-family: 'Pacifico', cursive;
-            background: url('https://source.unsplash.com/1600x900/?sakura,flowers') no-repeat center center/cover;
-            height: 100vh;
+            background: black;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            position: relative;
+            height: 100vh;
             color: white;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
         .container {
-            backdrop-filter: blur(5px);
-            padding: 20px;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.6);
-            animation: fadeIn 2s ease-in-out;
+            position: relative;
         }
         .text {
-            font-size: 2.5em;
+            font-size: 24px;
+            font-weight: bold;
             opacity: 0;
-            animation: textFade 3s ease-in-out forwards;
+            animation: fadeIn 2s forwards;
         }
-        .next-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
-            background-color: pink;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        .next-btn:hover {
-            background-color: #ff69b4;
+        .flowers {
+            width: 100px;
+            height: 100px;
+            background: url('flowers.png') no-repeat center;
+            background-size: cover;
+            opacity: 0;
+            animation: fadeIn 3s forwards 1s;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes textFade {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes falling-sakura {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
-        }
-        .sakura {
-            position: absolute;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Sakura_petal.png') no-repeat center/contain;
-            animation: falling-sakura linear infinite;
-        }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="https://www.mboxdrive.com/Thinking%20Out%20Loud.mp3" type="audio/mpeg">
-    </audio>
-    <div class="container" id="slide1">
-        <h1 class="text">Happy Birthday My Sister🥳</h1>
-        <p class="text" style="animation-delay: 1s;">Wish you all the best</p>
-        <button class="next-btn" onclick="nextSlide()">Next</button>
+    <div class="container">
+        <div class="text">Happy Birthday for the Best Sister in the World</div>
+        <div class="flowers"></div>
     </div>
-    <div class="container" id="slide2" style="display: none;">
-        <h1 class="text">Thank you for being the best sister in the world</h1>
-    </div>
-    <script>
-        function nextSlide() {
-            document.getElementById('slide1').style.display = 'none';
-            document.getElementById('slide2').style.display = 'block';
-        }
-        function createSakura() {
-            const sakura = document.createElement('div');
-            sakura.classList.add('sakura');
-            sakura.style.left = Math.random() * window.innerWidth + 'px';
-            sakura.style.animationDuration = (Math.random() * 5 + 3) + 's';
-            document.body.appendChild(sakura);
-            setTimeout(() => { sakura.remove(); }, 7000);
-        }
-        setInterval(createSakura, 200);
-    </script>
 </body>
 </html>
