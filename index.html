@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Sister</title>
+    <title>Happy Birthday My Sister 🎉</title>
     <style>
         body {
             text-align: center;
-            background-color: black;
+            background-color: #000;
             color: pink;
-            font-family: Arial, sans-serif;
+            font-family: "Arial", sans-serif;
             padding: 20px;
             overflow: hidden;
         }
@@ -46,11 +46,14 @@
             100% { transform: translateY(0); }
         }
 
-        /* Falling roses animation */
+        /* Falling drawn roses */
         .falling-rose {
             position: absolute;
             top: -50px;
-            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Rose_icon.svg/512px-Rose_icon.svg.png');
+            background-size: cover;
             animation: fall linear infinite;
         }
 
@@ -72,10 +75,8 @@
     </style>
 </head>
 <body>
-    <div class="roses">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</div>
-    <h1>Happy Birthday My Sister</h1>
+    <h1>🎂 Happy Birthday My Sister 🎂</h1>
     <h2>💖 Wishing you love, joy, and happiness! 💖</h2>
-    <div class="roses">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</div>
 
     <!-- Background Music -->
     <audio id="bg-music" loop autoplay>
@@ -93,7 +94,6 @@
         function createFallingRose() {
             const rose = document.createElement("div");
             rose.classList.add("falling-rose");
-            rose.innerHTML = "🌹";
             rose.style.left = Math.random() * window.innerWidth + "px";
             rose.style.animationDuration = (3 + Math.random() * 2) + "s"; 
             document.body.appendChild(rose);
