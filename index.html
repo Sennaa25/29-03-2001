@@ -32,6 +32,24 @@
             to { text-shadow: 0 0 15px pink, 0 0 30px pink; }
         }
 
+        /* Cherry Blossom Trees */
+        .cherry-blossom {
+            position: absolute;
+            bottom: 0;
+            width: 200px;
+            height: auto;
+            animation: sway 3s ease-in-out infinite alternate;
+            opacity: 0.9;
+        }
+
+        .tree-left { left: 5%; }
+        .tree-right { right: 5%; transform: scaleX(-1); }
+
+        @keyframes sway {
+            from { transform: rotate(-2deg); }
+            to { transform: rotate(2deg); }
+        }
+
         /* Sakura Petals */
         .sakura {
             position: absolute;
@@ -64,6 +82,10 @@
 <body>
     <h1>🎂 Happy Birthday My Sister 🎂</h1>
     <h2>Wish you all the best 🥳🌸</h2>
+
+    <!-- Cherry Blossom Trees -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Cherry_blossom_tree.png" class="cherry-blossom tree-left">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Cherry_blossom_tree.png" class="cherry-blossom tree-right">
 
     <!-- Background Music -->
     <audio id="bg-music" loop autoplay>
