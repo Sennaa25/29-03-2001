@@ -4,11 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday My Sister</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         body {
             margin: 0;
             padding: 0;
             text-align: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Pacifico', cursive;
             background: url('https://source.unsplash.com/1600x900/?sakura,flowers') no-repeat center center/cover;
             height: 100vh;
             display: flex;
@@ -18,12 +19,14 @@
             position: relative;
             color: white;
             font-size: 2em;
+            overflow: hidden;
         }
         .container {
             backdrop-filter: blur(5px);
             padding: 20px;
             border-radius: 15px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 2s ease-in-out;
         }
         .next-btn {
             margin-top: 20px;
@@ -33,18 +36,26 @@
             border: none;
             background-color: pink;
             border-radius: 10px;
+            transition: 0.3s;
+        }
+        .next-btn:hover {
+            background-color: #ff69b4;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         @keyframes falling-sakura {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(100vh); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
         .sakura {
             position: absolute;
             top: 0;
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             background: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Sakura_petal.png') no-repeat center/contain;
-            animation: falling-sakura 5s linear infinite;
+            animation: falling-sakura linear infinite;
         }
     </style>
 </head>
@@ -71,7 +82,7 @@
             sakura.style.left = Math.random() * window.innerWidth + 'px';
             sakura.style.animationDuration = (Math.random() * 5 + 3) + 's';
             document.body.appendChild(sakura);
-            setTimeout(() => { sakura.remove(); }, 5000);
+            setTimeout(() => { sakura.remove(); }, 7000);
         }
         setInterval(createSakura, 300);
     </script>
